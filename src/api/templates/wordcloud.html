@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <title>Data Science Recommender Word Cloud</title>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src='https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js'></script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <head>
+    <body>
+        <!--Chart code will be here-->
+        <div id='container'></div>
+        <script>//set the data
+            anychart.onDocumentReady(function(){
+            const data = require('data/wordcloud.json');
+            console.log(data);
+            //create a tag word cloud chart
+            // create a tag cloud chart
+            var chart = anychart.tagCloud(data);
+            // set the chart title
+            chart.title('15 most spoken languages')
+            // set array of angles, by which words will be placed
+            chart.angles([0])
+            // enable color range
+            chart.colorRange(true);
+            // set color range length
+            chart.colorRange().length('80%');
+
+            // display chart
+            chart.container("container");
+            chart.draw();
+        });
+        
+        </script>
+            
+    </body>
+</html>
