@@ -1,4 +1,6 @@
 import re # import regex
+from nltk.corpus import stopwords
+
 
 def get_names(col):
     '''
@@ -72,3 +74,17 @@ def apply_clean_text(df, cols):
     for col in cols:
         df['clean_' + col] = df[col].apply(clean_text)
     return f'{cols} have been cleaned and formatted'
+
+def remove_stop_words(text):
+    '''
+    This function returns a text without stopwords
+    Parameters:
+        - text: a string
+    Returns:
+        - no_stopword_text: a string from text after removing stopwords
+    '''
+    # Create a set of the stopwords
+    stop_words = set(stopwords.words('english'))
+
+    no_stopword_text = [w for w in text.split() if not w in stop_words]
+    return ' '.join(no_stopword_text)
