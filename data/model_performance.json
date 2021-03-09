@@ -1,0 +1,23 @@
+[
+    {
+        "Model":"Logistic Regression",
+        "Test Accuracy":37.27,
+        "Precision":0.83,
+        "Recall":0.51,
+        "F1":0.63
+    },
+    {
+        "Model":"LinearSVC",
+        "Test Accuracy":36.82,
+        "Precision":0.78,
+        "Recall":0.56,
+        "F1":0.65
+    },
+    {
+        "Model":"RandomForestClassifier",
+        "Test Accuracy":35.65,
+        "Precision":0.84,
+        "Recall":0.46,
+        "F1":0.59
+    }
+]

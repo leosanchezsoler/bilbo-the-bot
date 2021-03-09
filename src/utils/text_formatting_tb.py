@@ -1,6 +1,8 @@
 import re # import regex
 from nltk.corpus import stopwords
-
+import numpy as np
+from tensorflow.keras.preprocessing.text import Tokenizer
+from nltk.stem import WordNetLemmatizer, SnowballStemmer
 
 def get_names(col):
     '''
@@ -88,3 +90,40 @@ def remove_stop_words(text):
 
     no_stopword_text = [w for w in text.split() if not w in stop_words]
     return ' '.join(no_stopword_text)
+
+def create_embedding_matrix(vocab_size):
+    '''
+    @leosanchezsoler
+    This function is used to create the necessary embedding matrix that will be used for training the model
+    Parameters:
+        - vocab_size: an integer with the length of the vocabulary
+    '''
+    tokenizer = Tokenizer()
+    embedding_matrix = np.zeros((vocab_size, 300))
+    for word, i in  tokenizer.word_index.items():
+            embedding_vector = word_vectors[word]
+            embedding_matrix[i] = embedding_vector
+    return embedding_matrix
+
+
+def tokenize_and_lemmatize(text):
+    '''
+    @leosanchezsoler
+    This function transforms words in order to attach them to their root
+    Parameters:
+        - text
+    Returns:
+        - lem: the lemmatized text
+    '''
+
+    lemmatizer = WordNetLemmatizer()
+    
+    # tokenization to ensure that punctuation is caught as its own token
+    tokens = [word.lower() for sent in nltk.sent_tokenize(text) for word in nltk.word_tokenize(sent)]
+    filtered_tokens = []
+    
+    for token in tokens:
+        if re.search('[a-zA-Z]', token):
+            filtered_tokens.append(token)
+    lem = [lemmatizer.lemmatize(t) for t in filtered_tokens]
+    return lem

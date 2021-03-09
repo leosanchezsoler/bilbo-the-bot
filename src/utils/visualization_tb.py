@@ -70,3 +70,21 @@ def freq_tags(df, sort_by, x, y, n=20, save=None, filename=None):
         plt.savefig(fname = path_png)
     
     plt.show()
+
+def plot_sentence_distribution(X, save=None, filename=None):
+    '''
+    @leosanchezsoler
+    This function plots distribution of sentences once they are tokenized
+    Parameters:
+        - X: input data
+        - save: if True, saves the file in png format
+        - filename: the name of the file that will be saved
+    '''
+    plt.hist([len(x) for x in X], bins=100)
+    plt.figure(figsize=(12,15))
+
+    if save:
+        path_png = 'documentation/images/static/' + filename + '.png'
+        plt.savefig(fname = path_png)
+        
+    plt.show()
