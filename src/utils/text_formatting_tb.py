@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
+import nltk
 
 def get_names(col):
     '''

@@ -1,6 +1,20 @@
+
 body, html {
     margin: 0;
     font-family:'sans-serif', monospace;;
+    background-color: #475C7A;
+}
+
+h1 {
+    color: #d8737f;
+}
+
+h3 {
+    color:#fcbb6d;
+}
+
+h4 {
+    color: #aaccff;
 }
 
 .content {

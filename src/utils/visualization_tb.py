@@ -5,6 +5,8 @@ import seaborn as sns
 import plotly.express as px 
 import pandas as pd 
 
+import tensorflow as tf
+
 
 def freq_words(df, terms = 30, save=None, filename=None):
     '''
@@ -82,6 +84,49 @@ def plot_sentence_distribution(X, save=None, filename=None):
     '''
     plt.hist([len(x) for x in X], bins=100)
     plt.figure(figsize=(12,15))
+
+    if save:
+        path_png = 'documentation/images/static/' + filename + '.png'
+        plt.savefig(fname = path_png)
+        
+    plt.show()
+
+def train_val_accuracy(model, filename=None, save=None):
+    '''
+    @leosanchezsoler
+    This function shows the loss over epochs of a model
+    Parameters:
+        - Model: a tensorflow model
+        - filename: a string containing the name of the plot
+        - save: if True, the model is saved to png
+    '''
+    plt.plot(model.history['acc'], label='(data)')
+    plt.plot(model.history['val_acc'], label='(validation data)')
+    plt.title('Accuracy for Text Classification')
+    plt.figure(figsize=(12,15))
+
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+    if save:
+        path_png = 'documentation/images/static/' + filename + '.png'
+        plt.savefig(fname = path_png)
+        
+    plt.show()
+
+def model_loss(model, save=None, filename=None):
+    '''
+    @leosanchezsoler
+    This function shows model loss over epochs
+    Parameters:
+        - model: a tensorflow model
+    '''
+    plt.plot(model.history['loss'])
+    plt.plot(model.history['val_loss'])
+    plt.title('Model Loss')
+    plt.ylabel('Loss')
+    plt.xlabel('Epochs')
+    plt.legend(['train', 'val'])
 
     if save:
         path_png = 'documentation/images/static/' + filename + '.png'

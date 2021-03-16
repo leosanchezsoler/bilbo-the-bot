@@ -25,3 +25,4 @@ def get_performance(y_test, y_pred):
     print(f'Recall    : {recall}')
     print(f'F1-score   : {f1score}')
     return accuracy, precision, recall, f1score
+
