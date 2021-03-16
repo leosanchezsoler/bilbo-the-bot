@@ -24,9 +24,6 @@ users = {
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-    if request.method == 'POST':
-        mysearch = request.form['mysearch']
-        get_recommendations(title= mysearch, df=df, tfidf_vect=tfidf_vect_pkl)
     return render_template('index.html')
 
 @auth.verify_password
