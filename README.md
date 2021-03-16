@@ -1,6 +1,6 @@
 # Bilbo the bot 
 Bilbo is a search engine that is always willing to help students along their journey to become Data Scientists.
-Trained with Logistic Regression ([Logistic Regression](https://towardsdatascience.com/introduction-to-logistic-regression-66248243c148)), Bilbo provides papers of almost every topic involving Data.
+Bilbo is trained with Natural Language Processing Techniques and provides papers of almost every topic involving Data.
 
 ## Project Steps
  - Exploratory Data Analysis (EDA):
